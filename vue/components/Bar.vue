@@ -1,6 +1,6 @@
 <template>
     <div class="bar">
-        <span :style="'width:'+val_percent+';'" :class="stat">{{val}}</span>
+        <span :style="'width:'+val+'%;'" :class="stat_class"></span>
     </div>
 </template>
 
@@ -8,59 +8,83 @@
 export default {
     props:{
         val:Number,
-        val_percent:String,
-        stat:String
+        stat:String,
+        total:Boolean
+        
+    },
+    data(){
+        return{
+            val_percent:String,
+            stat_class:String,
+        }
     },
     created(){
-        let val_percent = Math.round((this.val/255)*100)
-        this.val_percent = val_percent.toString() +'%'
+        if (this.val < 26){
+            this.stat_class = 'low';
+        }else if (this.val < 35){
+            this.stat_class = 'medium';
+        }else if (this.val < 62){
+            this.stat_class = 'high';
+        }
+        else{
+            this.stat_class = 'super';
+        }
     }
 }
 </script>
 
 
 <style lang="scss" scoped>
-.bar{
-    box-sizing: content-box;
-    height: 30px;
-    width:500px;
-    position: relative;
-    margin: 10px 0 10px 0;
-    background: transparent;
-    color:#fff;
-    border-radius: 25px;
-    padding: 10px;
-    box-shadow: inset 0 -1px 1px #fff5;
-
-    span{
-        display: block;
-        height: 100%;
-        border-radius: 8px;
-        box-shadow: inset 0  2px 9px #fff5,
-                    inset 0 -2px 6px #0006;
-        position: relative;
-        overflow: hidden;
-        
-    }
-}
 @layer components{
-    .HP{ 
-        @apply bg-red-500;
+    @mixin stat_color($color, $secondary_color, $border_color){
+         @apply border-2;
+         background: repeating-linear-gradient(
+             90deg,
+             $color,
+             $color 10px,
+             $secondary_color 10px,
+             $secondary_color 20px
+         );
+         border-color: $border_color;
+        background-size: 160px 160px;
     }
-    .Attack{
-        @apply bg-blue-400;
+
+    .bar{
+        box-sizing: content-box;
+        height: 30px;
+        width:500px;
+        position: relative;
+        margin: 5px 0 5px 0;
+        color:#fff;
+        border-radius: 25px;
+        padding: 5px;
+
+        span{
+            display: block;
+            height: 60%;
+            transform: translateY(20%);
+            border-radius: 5px;
+            animation: grow 1s , grad 1s linear infinite;
+        }
     }
-    .Defense{
-        @apply bg-yellow-500;
+    @keyframes grow { 
+        0% {width:0px} 
     }
-    .Special_Attack{ 
-        @apply bg-indigo-400; 
+    @keyframes grad { 
+        0%{background-position: 0px}
+        100%{background-position:   20px}
     }
-    .Special_Defense{ 
-        @apply bg-yellow-600; 
+    .low{
+        @include stat_color(#ef4444, #f87171,#991b1b)
     }
-    .Speed{ 
-        @apply bg-purple-500; 
+    .medium{
+        @include stat_color(#fbbf24, #fcd34d,#d97706)
+    }
+    .high{
+        @include stat_color(#34d399, #3ee7b7,#047857)
+    }
+    .super{
+        @include stat_color(#60a5fa, #95c5fd,#2563eb)
     }
 }
 </style>

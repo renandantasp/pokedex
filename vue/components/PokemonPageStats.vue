@@ -1,13 +1,18 @@
 <template>
-    <div class="bg-gray-200 border-2 border-gray-200 mb-3 mx-4">
-            <table v-for="(stat, id) in stats_val" v-bind:key="id">
-                <tr>
-                    <td >{{stats_name[id] | filter_name}}</td>
-                    <td>
-                        <Bar :val="stat" :stat="stats_name[id]" />
-                    </td>
-                </tr>
-            </table>
+    <div class="table">
+        <p class="font-black text-2xl p-5"> Base Stats </p>
+            <table>
+                    <tr v-for="(stat, id) in stats_val" :key="id">
+                        <td class="name"> {{stats_name[id] | filter_name}} </td>
+                        <td> {{stat}} </td>
+                        <td><Bar :val="stat_percent(false,stat)"/> </td>
+                    </tr>
+                    <tr>
+                        <td class="name"> Total </td>
+                        <td class="font-bold"> {{sum_stat()}} </td>
+                        <td><Bar :val="stat_percent(true)" /></td>
+                    </tr>
+            </table> 
     </div>
 </template>
 
@@ -35,12 +40,31 @@ export default {
             stats_val:[],
         }
     },
+    methods:{
+        sum_stat(){
+            let sum = 0
+            for(let i=0; i<6;i++){
+                sum += this.stats_val[i]
+            }
+            return sum
+        },
+        stat_percent(total=false, val=0){
+            let sum = 0
+            if (total == true){
+                for(let i=0; i<6;i++){
+                    sum += this.stats_val[i]
+                }
+                return Math.round((sum/1530)*100)
+            }
+            return  Math.round((val/255)*100)
+        }
+    },
     async created(){
         const response = await this.$axios.$get(`https://pokeapi.co/api/v2/pokemon/${this.id}`)
         this.data = response
         let stats = new Array(6)
+        let sum
         for(let i=0;i<6;i++){
-            // this.stat_name[i] = response.stats[i].stat.name
             stats[i] = response.stats[i].base_stat
         }
         this.stats_val = stats
@@ -49,7 +73,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.nsei{
-    text-align: end;
+@layer components{
+    table{
+        table-layout: fixed;
+        @apply mb-3;
+        tr{
+            border-bottom: solid 1px #d1d5db;
+            @apply mx-4;
+        }
+        td{
+            text-align:center;
+            width: 80px;
+            @apply px-2;
+        }
+
+    }
+    .table{
+        text-align: center;
+        border-radius: 5px; 
+
+        .name{
+            text-align: end;
+            color: #808080;
+            width: 120px;
+        }
+    }
 }
 </style>
