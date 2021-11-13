@@ -54,9 +54,11 @@ export default {
         height: 30px;
         width:500px;
         position: relative;
+        // border-right: solid 1px #ccc;
+        // border-right: solid 1px #ccc;
         margin: 5px 0 5px 0;
-        color:#fff;
-        border-radius: 25px;
+        color:transparent;
+        border-radius: 0;
         padding: 5px;
 
         span{

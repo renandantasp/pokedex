@@ -1,20 +1,20 @@
 <template>
-<PokemonPage :id="name"/>
+<Page :id="name"/>
 </template>
 
 <script>
-import PokemonPage from '@/components/PokemonPage'
+import Page from '@/components/Page'
 export default {
   layout: 'default',
   components:{
-    PokemonPage
+    Page
   },
   data(){
     return{
       name:this.$route.params.name,
       data:{},
-      name_caps: String,
-      front_default: String
+      name_caps: 'Pokédex',
+      front_default: ''
     }
   },
   filters: {

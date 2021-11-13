@@ -1,13 +1,13 @@
 <template>
-<PokemonListPage/>
+<ListPage/>
 </template>
 
 <script>
-import PokemonListPage from '@/components/PokemonListPage'
+import ListPage from '@/components/ListPage'
 export default {
   layout: 'default',
   components:{
-    PokemonListPage
+    ListPage
   }
 }
 </script>

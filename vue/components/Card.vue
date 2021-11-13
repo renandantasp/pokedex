@@ -5,7 +5,12 @@
                 <div class="px-6 py-4 bg-gray-200 not-hover">
                     <img class=" rounded-xl" :src="sprite">
                     <div class="mt-2 mb-2 flex justify-between">
-
+                    <!-- <pre>
+                        {{data}}
+                    </pre> -->
+                    <!-- <pre>
+                        {{data.types[0].type}}
+                    </pre> -->
                         <p class="font-bold pt-1 text-gray-800 text-xl">{{name | capitalize | gender}}</p>
                         <p class="font-bold pt-1 text-gray-400 text-lg">{{id | format_number}}</p>
 
@@ -27,15 +32,12 @@
 <script>
 export default {
     props:{
-        id: {type:Number, required:true}
+        id: {type:Number, required:true},
     },
     data(){
         return{
-            title:'Pokedex',
             data:{},
-            name:String,
-            sprite:String,
-            types:[]
+            title:'Pokedex',
         }
     },
     filters: {
@@ -54,10 +56,9 @@ export default {
         },
         gender: function(value){
             if (!value) return ''
-            value = value.toString()
-            value = value.replace('-f', ' ♀')
-            value = value.replace('-m', ' ♂')
-            return value
+            return value.toString()
+                        .replace('-f', ' ♀')
+                        .replace('-m', ' ♂')
         }
     },
     head(){
@@ -67,18 +68,27 @@ export default {
         }
     },
     async created(){
-        const response = await this.$axios.$get(`https://pokeapi.co/api/v2/pokemon/${this.id}`)
-        this.data = response
-        this.name = response.name
-        // this.name = toUpper(response.name)
-        this.sprite = response.sprites.other['official-artwork'].front_default
-        this.types = [response.types[0].type.name]
-        if (response.types.length > 1){
-            this.types.push(response.types[1].type.name)
+        try {
+            this.data = await this.$axios.$get(`https://pokeapi.co/api/v2/pokemon/${this.id}`)
+        } catch(e) {
+            console.error(e.message)
         }
-
+    },
+    computed:{
+        name(){
+            if (this.data)
+                return this.data.name
+            return ''
+        },
+        sprite(){
+                return this.data.sprites?.other['official-artwork']?.front_default || ''
+        },
+        types(){
+                return this.data.types?.map( (entry) => entry.type.name ) || [0,0,0,0,0,0]
+        }
     }
 }
+
 </script>
 
 
