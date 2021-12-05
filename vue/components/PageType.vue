@@ -1,56 +1,35 @@
 <template>
     <div>  
         <h1 class="font-black text-2xl p-5 text-center" > Type Effectiveness </h1>
-        <div v-if="dmg_from.qd.length">
-            <p>Receives 4× damage from:</p>
-            <div class="display">
-                <div v-for="tp in dmg_from.qd" :key="tp">
-                    <p :class="tp">{{tp | capitalize}}</p>
-                </div>
-            </div>
-        </div>
+        <PageTypeEffect :dmg="dmg_from.qd"> 
+           <p> Receives 4× damage from: </p>
+        </PageTypeEffect>
+        
+        <PageTypeEffect :dmg="dmg_from.db"> 
+           <p> Receives 2× damage from: </p>
+        </PageTypeEffect>
 
-        <div v-if="dmg_from.db.length">
-            <p>Receives 2× damage from:</p>
-            <div class="display">
-                <div v-for="tp in dmg_from.db"  :key="tp">
-                    <p :class="tp" >{{tp | capitalize}}</p>
-                </div>
-            </div>
-        </div>
+        <PageTypeEffect :dmg="dmg_from.hf"> 
+           <p> Receives ½× damage from: </p>
+        </PageTypeEffect>
 
-        <div v-if="dmg_from.db.length">
-            <p>Receives ½× damage from:</p>
-            <div class="display">
-                <div v-for="tp in dmg_from.hf"  :key="tp">
-                    <p :class="tp" >{{tp | capitalize}}</p>
-                </div>
-            </div> 
-        </div>
+        <PageTypeEffect :dmg="dmg_from.qt"> 
+           <p> Receives ¼× damage from: </p>
+        </PageTypeEffect>
 
-        <div v-if="dmg_from.qt.length">
-            <p>Receives ¼× damage from:</p>
-            <div class="display">
-                <div v-for="tp in dmg_from.qt"  :key="tp">
-                    <p :class="tp" >{{tp | capitalize}}</p>
-                </div>
-            </div>
-        </div>
-
-        <div v-if="dmg_from.no.length">
-            <p>Receives no damage from:</p>
-            <div class="display">
-                <div v-for="tp in dmg_from.no"  :key="tp">
-                    <p :class="tp" >{{tp | capitalize}}</p>
-                </div>
-            </div>
-        </div>
+        <PageTypeEffect :dmg="dmg_from.no"> 
+           <p> Receives no damage from: </p>
+        </PageTypeEffect>
 
     </div>
 </template>
 
 <script>
+import PageTypeEffect from '@/components/PageTypeEffect.vue'
 export default {
+    components:{
+        PageTypeEffect
+    },
     props:{
         type_relation:[]
     },
@@ -99,7 +78,6 @@ export default {
 <style lang="scss" scoped>
 
 .display{
-    // border: 1px solid black;
     display: flex;
     flex-direction: row;
     justify-content: center;
