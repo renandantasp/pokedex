@@ -1,0 +1,198 @@
+.grass {
+  padding: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  margin-right: 0.75rem;
+  text-align: center;
+  color: #f9fafb;
+  border-radius: 1.5rem;
+  background: #10b981;
+}
+
+.fire {
+  padding: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  margin-right: 0.75rem;
+  text-align: center;
+  color: #f9fafb;
+  border-radius: 1.5rem;
+  background: #ef4444;
+}
+
+.water {
+  padding: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  margin-right: 0.75rem;
+  text-align: center;
+  color: #f9fafb;
+  border-radius: 1.5rem;
+  background: #3b82f6;
+}
+
+.ice {
+  padding: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  margin-right: 0.75rem;
+  text-align: center;
+  color: #f9fafb;
+  border-radius: 1.5rem;
+  background: #bfdbfe;
+}
+
+.flying {
+  padding: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  margin-right: 0.75rem;
+  text-align: center;
+  color: #f9fafb;
+  border-radius: 1.5rem;
+  background: #a5b4fc;
+}
+
+.electric {
+  padding: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  margin-right: 0.75rem;
+  text-align: center;
+  color: #f9fafb;
+  border-radius: 1.5rem;
+  background: #fbbf24;
+}
+
+.psychic {
+  padding: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  margin-right: 0.75rem;
+  text-align: center;
+  color: #f9fafb;
+  border-radius: 1.5rem;
+  background: #f472b6;
+}
+
+.fighting {
+  padding: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  margin-right: 0.75rem;
+  text-align: center;
+  color: #f9fafb;
+  border-radius: 1.5rem;
+  background: #991b1b;
+}
+
+.ghost {
+  padding: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  margin-right: 0.75rem;
+  text-align: center;
+  color: #f9fafb;
+  border-radius: 1.5rem;
+  background: #4c1d95;
+}
+
+.steel {
+  padding: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  margin-right: 0.75rem;
+  text-align: center;
+  color: #f9fafb;
+  border-radius: 1.5rem;
+  background: #9ca3af;
+}
+
+.fairy {
+  padding: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  margin-right: 0.75rem;
+  text-align: center;
+  color: #f9fafb;
+  border-radius: 1.5rem;
+  background: #f9a8d4;
+}
+
+.dragon {
+  padding: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  margin-right: 0.75rem;
+  text-align: center;
+  color: #f9fafb;
+  border-radius: 1.5rem;
+  background: #7c3aed;
+}
+
+.poison {
+  padding: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  margin-right: 0.75rem;
+  text-align: center;
+  color: #f9fafb;
+  border-radius: 1.5rem;
+  background: #B020DD;
+}
+
+.normal {
+  padding: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  margin-right: 0.75rem;
+  text-align: center;
+  color: #f9fafb;
+  border-radius: 1.5rem;
+  background: #A0A090;
+}
+
+.bug {
+  padding: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  margin-right: 0.75rem;
+  text-align: center;
+  color: #f9fafb;
+  border-radius: 1.5rem;
+  background: #A0BA50;
+}
+
+.ground {
+  padding: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  margin-right: 0.75rem;
+  text-align: center;
+  color: #f9fafb;
+  border-radius: 1.5rem;
+  background: #deb25f;
+}
+
+.rock {
+  padding: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  margin-right: 0.75rem;
+  text-align: center;
+  color: #f9fafb;
+  border-radius: 1.5rem;
+  background: #bd9e60;
+}
+
+.dark {
+  padding: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  margin-right: 0.75rem;
+  text-align: center;
+  color: #f9fafb;
+  border-radius: 1.5rem;
+  background: #47352e;
+}
+/*# sourceMappingURL=main.css.map */

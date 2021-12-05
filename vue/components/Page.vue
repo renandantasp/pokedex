@@ -1,23 +1,35 @@
 <template>
 <div>
+
+    <!-- Previous and Next Pokémon  -->
     <div class="arrows">
         <a class="left" :href="previous[0]">
             <img src="@/static/right-arrow.png" style="transform: scaleX(-1)" width="20" >
-            {{previous[0] | capitalize}}  {{previous[1]| format_number}}
+            {{previous[0] | capitalize | gender}}  {{previous[1]| format_number}}
             </a>
         <a class="right" :href="next[0]">
-            {{next[0] | capitalize}} {{next[1] | format_number}} 
+            {{next[0] | capitalize | gender}} {{next[1] | format_number}} 
             <img src="@/static/right-arrow.png" width="20">
             </a>
     </div>
+
+    <!-- Page Components -->
     <div class="page">
         <div class="page-item img">
             <img :src="sprite">
         </div>
-        <PageInfo :name="id" :types="types" :info="info" class="page-item"/>
+        <PageInfo 
+            :name="id" 
+            :types="types" 
+            :info="info" 
+            :abilities="abilities" 
+            class="page-item"
+        />
+
         <div class="break"></div>
+
         <PageStats :stats="stats" class="page-item"/>
-        <PageType  :types="types" class="page-item  "/>
+        <PageType  :type_relation="type_relation" class="page-item  "/>
     </div>
 </div>
 </template>
@@ -43,15 +55,21 @@ export default {
             data:{},
             next:[],
             previous:[],
+            type_relation:[]
         }
-    },
-    methods:{
-
     },
     async created(){
         const response = await this.$axios.$get(`https://pokeapi.co/api/v2/pokemon/${this.id}`)
         this.data = response
         
+        const types = this.data.types?.map( (entry) => entry.type.name ) || []
+        for (var t of types){
+            const type_rel = await this.$axios.$get(`https://pokeapi.co/api/v2/type/${t}`)
+            this.type_relation.push({name:t,rel:type_rel.damage_relations})
+        }
+
+
+
         let res
 
         if (response.id+1 == 899)
@@ -74,14 +92,19 @@ export default {
             return this.data.sprites?.other['official-artwork']?.front_default || ''
         },
         types(){
-                return this.data.types?.map( (entry) => entry.type.name ) || []
+            return this.data.types?.map( (entry) => entry.type.name ) || []
         },
         stats(){
             return this.data.stats?.map( (entry) => entry.base_stat)
         },
         info(){
             return {'height':this.data.height,'weight':this.data.weight}
-        }
+        },
+        abilities(){
+            return this.data.abilities?.map((entry) => (
+                {name:entry.ability.name, is_hidden:entry.is_hidden}
+            ))
+        },
     },
     filters: {
         capitalize: function (value) {
@@ -101,8 +124,8 @@ export default {
         gender: function(value){
                 if (!value) return ''
                 return value.toString()
-                            .replace('-f', ' ♀')
-                            .replace('-m', ' ♂')
+                            .replace('n-f', 'n ♀')
+                            .replace('n-m', 'n ♂')
         }
     },
 }

@@ -1,0 +1,34 @@
+@mixin type($color){
+    padding: 0.25rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    margin-right: 0.75rem;
+    text-align: center;
+    color: #f9fafb;
+    border-radius: 1.5rem;
+    background: $color;
+}
+
+.grass   { @include type(#10b981) }   
+.fire    { @include type(#ef4444) }
+.water   { @include type(#3b82f6) }
+
+.ice     { @include type(#bfdbfe) }
+.flying  { @include type(#a5b4fc) }
+.electric{ @include type(#fbbf24) }
+
+.psychic { @include type(#f472b6) }
+.fighting{ @include type(#991b1b) }
+.ghost   { @include type(#4c1d95) }
+
+.steel   { @include type(#9ca3af) }
+.fairy   { @include type(#f9a8d4) }
+.dragon  { @include type(#7c3aed) }
+
+.poison  { @include type(#B020DD)  }
+.normal  { @include type(#A0A090)  }
+.bug     { @include type(#A0BA50)  }
+
+.ground  { @include type(#deb25f)  }
+.rock    { @include type(#bd9e60)  }
+.dark    { @include type(#47352e)  }

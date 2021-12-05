@@ -94,7 +94,7 @@ export default {
 
 <style scoped>
 @layer components{
-
+/* 
     .grass   { @apply bg-green-500 }   
     .fire    { @apply bg-red-500   }
     .water   { @apply bg-blue-500  }
@@ -117,7 +117,7 @@ export default {
 
     .ground  { background: #deb25f  }
     .rock    { background: #bd9e60  }
-    .dark    { background: #47352e  }
+    .dark    { background: #47352e  } */
 
     .hover-card 
     

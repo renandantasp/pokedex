@@ -7,15 +7,14 @@
 <script>
 export default {
     props:{
-        val:Number,
-        stat:String,
-        total:Boolean
+        val:0,
+        stat:'',
+        total:''
         
     },
     data(){
         return{
-            val_percent:String,
-            stat_class:String,
+            stat_class:'',
         }
     },
     created(){

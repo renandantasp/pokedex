@@ -2,7 +2,7 @@
     <div>
         <div class="table">
 
-            <h1 class="text-4xl font-bold">{{name | capitalize}}</h1>
+            <h1 class="text-4xl font-bold">{{name | capitalize | gender}}</h1>
             <table>
                 <tr>
                     <td class="name">Type:</td>
@@ -20,8 +20,9 @@
                 </tr>
                 <tr>
                     <td class="name">Abilities:</td>
-                    <td class="ability">asdasdasd</td>
-                    <!-- <td class="data">{{abilities}}</td> -->
+                    <td class="ability">
+                        <p v-for="ab in abilities" :key="ab.name"> {{ab.name | capitalize}} <span v-if="ab.is_hidden">(hidden ability)</span></p>
+                    </td>
                 </tr>
             </table>
         </div>
@@ -32,9 +33,9 @@
 export default {
     props:{
         name:'',
-        types:[],
-        abilities:[],
-        info:{}
+        types:'',
+        abilities:'',
+        info:''
     },
     filters:{
         capitalize : function(value){
@@ -52,50 +53,31 @@ export default {
             value = value/10
             return (value.toString() + ' kg')
         },
-
+        gender: function(value){
+                if (!value) return ''
+                return value.toString()
+                            .replace('n-f', 'n ♀')
+                            .replace('n-m', 'n ♂')
+        }
     },
 }
 </script>
 
 <style lang="scss" scoped>
     @layer components{
-        @mixin type($color){
-            @apply text-gray-50;
-            @apply p-1;
-            @apply px-3;
-            @apply mr-3;
-            @apply rounded-3xl;
-            background: $color;
-        }
-        h1{
-            @apply my-4;
-        }
-        p{
-            @apply font-bold;
-            @apply text-lg;
-        
-        }
-        span{
-            @apply font-medium;
-        }
+        h1   { @apply my-4 }
+        span { @apply font-medium }
+
 
         table{
             table-layout: fixed;
             width:100%;
             height:100%;
-
-            // @apply mb-3;
-            tr{
-                border-bottom: solid 1px #d1d5db;
-                // @apply mx-4;
-            }
+            tr{ border-bottom: solid 1px #d1d5db; }
             td{
-                // text-align:center;
                 width: 80px;
                 padding:10px;
-                // @apply px-2;
             }
-
         }
         .table{
             .name{
@@ -105,33 +87,11 @@ export default {
             }
             .ability{
                 @apply text-blue-500;
-                text-decoration: underline;
+                span{
+                    @apply text-gray-600;
+                }
             }
         }
-
-        .grass   { @include type(#10b981) }   
-        .fire    { @include type(#ef4444) }
-        .water   { @include type(#3b82f6) }
-
-        .ice     { @include type(#bfdbfe) }
-        .flying  { @include type(#a5b4fc) }
-        .electric{ @include type(#fbbf24) }
-        
-        .psychic { @include type(#f472b6) }
-        .fighting{ @include type(#991b1b) }
-        .ghost   { @include type(#4c1d95) }
-
-        .steel   { @include type(#9ca3af) }
-        .fairy   { @include type(#f9a8d4) }
-        .dragon  { @include type(#7c3aed) }
-        
-        .poison  { @include type(#B020DD)  }
-        .normal  { @include type(#A0A090)  }
-        .bug     { @include type(#A0BA50)  }
-
-        .ground  { @include type(#deb25f)  }
-        .rock    { @include type(#bd9e60)  }
-        .dark    { @include type(#47352e)  }
 }
 
 </style>
