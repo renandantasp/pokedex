@@ -85,7 +85,7 @@ footer{
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    border: 10px solid #ef4444;
+    border: 10px solid #cc241d;
     border-top: 10px solid #ffffff00;
     animation: rot 1s linear infinite;
   }

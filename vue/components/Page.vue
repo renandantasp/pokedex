@@ -4,12 +4,12 @@
     <!-- Previous and Next Pokémon  -->
     <div class="arrows">
         <a class="left" :href="previous[0]">
-            <img src="@/static/right-arrow.png" style="transform: scaleX(-1)" width="20" >
+            <img src="@/static/right-arrow.png" style="transform: scaleX(-1); padding-top:5px" width="10" >
             {{previous[0] | capitalize | gender}}  {{previous[1]| format_number}}
             </a>
         <a class="right" :href="next[0]">
             {{next[0] | capitalize | gender}} {{next[1] | format_number}} 
-            <img src="@/static/right-arrow.png" width="20">
+            <img src="@/static/right-arrow.png" style="padding-top:5px" width="10">
             </a>
     </div>
 
@@ -184,8 +184,8 @@ export default {
         align-content: space-around;
         margin-bottom: 20px;
         .left{
-            @apply bg-gray-400;
-            @apply text-white;
+            background: #504945;
+            color: #d5c4a1;
             @apply font-bold;
             border-radius: 0 0px 0px 10px;
             border-right: solid #303030;
@@ -193,8 +193,8 @@ export default {
 
         }
         .right{
-            @apply bg-gray-400;
-            @apply text-white;
+            background: #504945;
+            color: #d5c4a1;
             @apply font-bold;
             border-radius: 0 0px 10px 0px;
             padding:8px;

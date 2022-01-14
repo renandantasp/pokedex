@@ -78,13 +78,15 @@ export default {
 <style lang="scss" scoped>
 
 .display{
+    
     display: flex;
     flex-direction: row;
     justify-content: center;
 
     padding:10px;
 }
-p{
+h1, p{
+    color: #f9f5d7;
     text-align:center;
 }
 </style>

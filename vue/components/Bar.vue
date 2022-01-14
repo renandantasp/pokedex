@@ -54,7 +54,6 @@ export default {
         width:500px;
         position: relative;
         // border-right: solid 1px #ccc;
-        // border-right: solid 1px #ccc;
         margin: 5px 0 5px 0;
         color:transparent;
         border-radius: 0;
@@ -76,16 +75,16 @@ export default {
         100%{background-position:   20px}
     }
     .low{
-        @include stat_color(#ef4444, #f87171,#991b1b)
+        @include stat_color(#ab413c, #82303a,#82303a)
     }
     .medium{
-        @include stat_color(#fbbf24, #fcd34d,#d97706)
+        @include stat_color(#d79921, #c27d15,#c27d15)
     }
     .high{
-        @include stat_color(#34d399, #3ee7b7,#047857)
+        @include stat_color(#689d6a, #528764,#528764)
     }
     .super{
-        @include stat_color(#60a5fa, #95c5fd,#2563eb)
+        @include stat_color(#458588, #427385,#427385)
     }
 }
 </style>

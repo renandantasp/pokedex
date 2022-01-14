@@ -57,12 +57,7 @@ export default {
                         .replace('an-m', 'an ♂')
         }
     },
-    head(){
-        return{
-            title: this.title,
-            link: [{ rel: 'icon', type: 'image/png', href: '/pokeball.png' }],
-        }
-    },
+    
     async created(){
         try {
             this.data = await this.$axios.$get(`https://pokeapi.co/api/v2/pokemon/${this.id}`)

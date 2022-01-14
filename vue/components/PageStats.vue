@@ -68,7 +68,7 @@ export default {
         table-layout: fixed;
         @apply mb-3;
         tr{
-            border-bottom: solid 1px #d1d5db;
+            border-bottom: solid 1px #7c6f64;
             @apply mx-4;
         }
         td{
@@ -80,10 +80,10 @@ export default {
     }
     .table{
         text-align: center; 
-
+        color: #f9f5d7;
         .name{
             text-align: end;
-            color: #808080;
+            color: #a89984;
             width: 120px;
         }
     }

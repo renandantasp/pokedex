@@ -1,16 +1,9 @@
 <template>
   <div> 
-    <div align="center" class="pt-5">
-      
-      <input type="text" name="search-bar" @keyup="doSearch" v-model="query">
-      <!-- <div class="resultado" v-if="listResult">
-        <ul>
-          <li v-for="pkmn in listResult" :key="pkmn.refIndex">
-            <b>{{pkmn.item}}</b>
-          </li>
-        </ul>
-      </div> -->
-  </div>
+    <div align="center" class="pt-5 input-icons">
+      <i class="icon fa fa-search"></i>
+      <input class="search-bar" type="text" @keyup="doSearch" v-model="query">
+    </div>
 
   </div>
 </template>
@@ -58,3 +51,36 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.icon{
+  color:#928374;
+  padding: 35px;
+  min-width: 40px;
+}
+.input-icons i{
+   position: absolute;
+}
+.search-bar{
+  background: #504945;
+  padding:10px;
+  padding-left: 40px;
+  padding-right: 40px;
+  width:30vw;
+  color:#ebdbb2;
+  margin:20px;
+  border-width: 2px;
+  border-color: #504945;
+  border-radius: 30px;
+  &:hover{
+    background: #3c3836;
+    border-color: #7c6f64;
+  }
+  &:focus{
+    outline-width: 0;
+    background: #3c3836;
+    border-color: #7c6f64;
+  }
+}
+
+</style>

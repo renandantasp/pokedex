@@ -65,7 +65,10 @@ export default {
 
 <style lang="scss" scoped>
     @layer components{
-        h1   { @apply my-4 }
+        h1{ 
+            @apply my-4;
+            color: #f9f5d7;
+        }
         span { @apply font-medium }
 
 
@@ -73,7 +76,7 @@ export default {
             table-layout: fixed;
             width:100%;
             height:100%;
-            tr{ border-bottom: solid 1px #d1d5db; }
+            tr{ border-bottom: solid 1px #7c6f64; }
             td{
                 width: 80px;
                 padding:10px;
@@ -82,13 +85,16 @@ export default {
         .table{
             .name{
                 text-align: end;
-                color: #808080;
+                color: #a89984;
                 width:15px;
             }
+            .data{
+                color: #f9f5d7;
+            }
             .ability{
-                @apply text-blue-500;
+                color: #b16286;
                 span{
-                    @apply text-gray-600;
+                    color: #a89984;
                 }
             }
         }
