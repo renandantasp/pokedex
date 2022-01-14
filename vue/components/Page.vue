@@ -202,7 +202,7 @@ export default {
         }
         img{
             display: inline;
-            filter: invert(100%)
+            // filter: invert(100%)
         }
     }
 }
