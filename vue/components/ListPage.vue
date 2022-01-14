@@ -1,9 +1,12 @@
 <template>
 <div class="margin">
+    <SearchBar @search="doShit"/>
+    <!-- {{this.search_result}} -->
     <div class="p-5 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-3">
-        <Card v-for="(n, index) in pageOffset" :key="index" :id="index+1"/>
+        <Card v-show="search_result.length == 0" v-for="(n, index) in pageOffset" :key="index" :id="index+1"/>
+        <Card v-show="search_result.length != 0" v-for="pkmn in search_result" :key="pkmn" :id="pkmn"/>
     </div>
-    <footer ref="infinitescrolltrigger">
+    <footer v-if="search_result.length == 0" ref="infinitescrolltrigger">
       <div id="scroll-trigger" v-if="showLoader"></div>
       <div class="circle-loader"></div>
     </footer>
@@ -12,16 +15,19 @@
 
 <script>
 import Card from '@/components/Card'
+import SearchBar from '@/components/SearchBar'
 export default {
   components:{
-    Card
+    Card,
+    SearchBar
   },
   data(){
     return{
       currentPage:1,
       maxPerPage: 20,
       totalResults:898,
-      showLoader:true
+      showLoader:true,
+      search_result: []
     }
   },
   computed:{
@@ -30,9 +36,13 @@ export default {
     },
     pageOffset(){
       return this.currentPage * this.maxPerPage;
-    }
+    },
+
   },
   methods:{
+    doShit(event){
+      this.search_result= event
+    },
     scrollTrigger(){
       const observer = new IntersectionObserver((entries) =>{
         entries.forEach(entry =>{

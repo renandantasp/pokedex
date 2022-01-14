@@ -1,19 +1,22 @@
 <template>
     <div class=" p-5">
-        <section class="max-w-sm rounded overflow-hidden shadow-xl ">
-            <a class="hover-card" :href="'pokemon/'+name">
+        <section class="card max-w-sm rounded overflow-hidden shadow-xl">
+            <a :href="'pokemon/'+name">
             
-                <div class="px-6 py-4 bg-gray-200 not-hover">
-                    <img class=" rounded-xl" :src="sprite">
-                    
-                    <div class="mt-2 mb-2 flex justify-between">
-                        <p class="font-bold pt-1 text-gray-800 text-xl">{{name | capitalize | gender}}</p>
-                        <p class="font-bold pt-1 text-gray-400 text-lg">{{id | format_number}}</p>
-                    </div>
+                <div class="px-7 py-5 ">
+                    <div>
 
-                    <div class="flex mt-1">
-                        <p class="text-gray-50 p-1 px-3 mr-3 rounded-3xl" :class="types[0]"> {{types[0] | capitalize}}</p>
-                        <p v-if="types[1]" class="text-gray-50 p-1 p-1 px-3 rounded-3xl" :class="types[1]" >{{types[1] | capitalize}}</p>
+                        <img :src="sprite">
+                        
+                        <div class="mt-2 mb-2 flex justify-between ">
+                            <p class="font-bold pt-1 name text-xl">{{name | capitalize | gender}}</p>
+                            <p class="font-bold pt-1 number text-lg">{{number | format_number}}</p>
+                        </div>
+
+                        <div class="flex mt-1">
+                            <p class="text-gray-50 p-1 px-3 mr-3 rounded-3xl" :class="types[0]"> {{types[0] | capitalize}}</p>
+                            <p v-if="types[1]" class="text-gray-50 p-1 p-1 px-3 rounded-3xl" :class="types[1]" >{{types[1] | capitalize}}</p>
+                        </div>
                     </div>
                 </div>
 
@@ -25,7 +28,7 @@
 <script>
 export default {
     props:{
-        id: {type:Number, required:true},
+        id: '',
     },
     data(){
         return{
@@ -50,8 +53,8 @@ export default {
         gender: function(value){
             if (!value) return ''
             return value.toString()
-                        .replace('-f', ' ♀')
-                        .replace('-m', ' ♂')
+                        .replace('an-f', 'an ♀')
+                        .replace('an-m', 'an ♂')
         }
     },
     head(){
@@ -68,6 +71,9 @@ export default {
         }
     },
     computed:{
+        number(){
+            return this.data.id
+        },
         name(){
             if (this.data) return this.data.name
             return ''
@@ -83,16 +89,38 @@ export default {
 </script>
 
 
-<style scoped>
-@layer components{
-    .hover-card :hover{
-        @apply border-2;
-        @apply border-red-500;
+<style  lang="scss" scoped>
+.card{
+    border-radius: 20px;
+    background: #504945;
+    border-width: 2px;
+    border-color: #554d49;
+    &:hover{
+        background: #f9f5d7;
+        .name{
+            color:#504945;
+        }
+        .color{
+            color:#7c6f64;
+        }
+        border-color: #f9f5d7;
+        transition: 0.5s;
     }
-
-    .not-hover :hover{
-        @apply border-0;
-        @apply border-blue-500;
+    .name{
+        font-family: 'M PLUS Rounded 1c', sans-serif;
+        font-weight: 800;
+        transition: 0.5s;
+        color: #f9f5d7;
+    }
+    .number{
+        font-family: 'M PLUS Rounded 1c', sans-serif;
+        transition: 0.5s;
+        color: #928374;
     }
 }
+
+.not-hover{
+    pointer-events:none;
+}
+
 </style>

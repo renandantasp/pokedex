@@ -14,3 +14,9 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+*{
+    background: #3c3836;
+}
+</style>

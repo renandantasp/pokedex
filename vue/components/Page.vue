@@ -30,6 +30,10 @@
 
         <PageStats :stats="stats" class="page-item"/>
         <PageType  :type_relation="type_relation" class="page-item  "/>
+
+        <div class="break"></div>
+
+        <p>evolution</p>
     </div>
 </div>
 </template>

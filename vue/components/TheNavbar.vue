@@ -2,18 +2,30 @@
     <div>
         <div class="fixed inset-x-0">
 
-            <ul class='flex max-w-6x1 text-lg bg-gray-100 border-b-2 border-gray-200'>
-                <li class="mr-5 p-3">
-                    <p class="text-red-500 font-bold" href="/"> DEX</p>
+            <ul class='flex max-w-6x1 py-1 text-xl'>
+                <li class="mr-4 py-3">
+                    <a class="p-4 dex" href="/">DEX</a>
                 </li>
-                <li class="mr-3 pt-3">
-                    <a class="text-red-500 p-4 hover:text-red-800 " href="/">Pokedex</a>
-                </li>
-                <li class="mr-4 pt-3">
-                    <a class="text-red-500 p-4 hover:text-red-800" href="#">Teams</a>
+                <li class="mr-4 py-3">
+                    <a class="p-4" href="#">Teams</a>
                 </li>
             </ul>
         </div>
         <div class="pb-14"></div>
     </div>
 </template>
+<style lang="scss" scoped>
+.dex{
+    font-weight: 900;
+    
+}
+ul{
+    background: #282828;
+}
+a{
+    color:#fbf1c7;
+    &:hover{
+        background: #303030;
+    }
+}
+</style>
