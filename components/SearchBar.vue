@@ -15,7 +15,7 @@ import Fuse from 'fuse.js';
 export default {
   data(){
     return{
-      pkmn_list: {},
+      pkmn_list: '',
       query: '',
     }
   },

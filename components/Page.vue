@@ -4,12 +4,12 @@
     <!-- Previous and Next Pokémon  -->
     <div class="arrows">
         <a class="left" :href="previous[0]">
-            <img src="@/static/right-arrow.png" style="transform: scaleX(-1); padding-top:5px" width="10" >
+            <font-awesome-icon class='item icon' :icon="['fa', 'arrow-left']"  />
             {{previous[0] | capitalize | gender}}  {{previous[1]| format_number}}
             </a>
         <a class="right" :href="next[0]">
             {{next[0] | capitalize | gender}} {{next[1] | format_number}} 
-            <img src="@/static/right-arrow.png" style="padding-top:5px" width="10">
+            <font-awesome-icon class='item icon' :icon="['fa', 'arrow-right']"  />
             </a>
     </div>
 
@@ -26,14 +26,14 @@
             class="page-item"
         />
 
-        <div class="break"></div>
+        <!-- <div class="break"></div> -->
 
         <PageStats :stats="stats" class="page-item"/>
         <PageType  :type_relation="type_relation" class="page-item  "/>
 
-        <div class="break"></div>
+        <!-- <div class="break"></div> -->
 
-        <p>evolution</p>
+        <!-- <p>evolution</p> -->
     </div>
 </div>
 </template>
@@ -56,7 +56,7 @@ export default {
     },
     data(){
         return{
-            data:{},
+            data:'',
             next:[],
             previous:[],
             type_relation:[]
