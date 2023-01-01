@@ -1,6 +1,6 @@
 # DEX
 
-Available @ [pokedexdex](https://pokedexdex.herokuapp.com), **DEX** is a simple pokedex application that displays data from the [PokéAPI](https://pokeapi.co/).
+Available @ [pokedexdex](https://pokedexdex.vercel.app), **DEX** is a simple pokedex application that displays data from the [PokéAPI](https://pokeapi.co/).
 
 ---
 
